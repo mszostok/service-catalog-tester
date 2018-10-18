@@ -18,10 +18,21 @@ notifications:
   email: false
 
 env:
+
 - DEP_VERSION="0.4.1"
 
 before_install:
+
 - curl -L -s https://github.com/golang/dep/releases/download/v${DEP_VERSION}/dep-linux-amd64 -o $GOPATH/bin/dep
 - chmod +x $GOPATH/bin/dep
 
 script: ./before-commit.sh
+
+jobs:
+  include:
+  - stage: releasing
+    script:
+      - echo "dupa 1"
+  - stage: releasing
+    script:
+    - echo "dupa 1"
